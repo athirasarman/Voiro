@@ -4,7 +4,7 @@ import {Pipe, PipeTransform} from '@angular/core';
   name: 'truncate'
 })
 
-export class TruncateName implements PipeTransform{
+export class TruncateNamePipe implements PipeTransform{
   transform(name: string): string {
     const ext: string =
       name.substring(name.lastIndexOf('.') + 1, name.length).toLowerCase();
@@ -15,6 +15,6 @@ export class TruncateName implements PipeTransform{
       return name;
     }
     newName = newName.substring(0, 8) + (name.length > 8 ? '[...]' : '');
-    return newName + '.' + ext;
+    return newName ;
   }
 }

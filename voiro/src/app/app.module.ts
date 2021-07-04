@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TruncateNamePipe } from './truncate-name.pipe';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ModalComponent,
     PageNotFoundComponent,
     DashboardComponent,
+    TruncateNamePipe
   ],
   imports: [
     BrowserModule,   

@@ -5,6 +5,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 import { UploadImageService } from '../upload-image.service';
 import { Image } from '../image';
+import { TruncateNamePipe } from '../truncate-name.pipe';
 
 @Component({
   selector: 'app-dashboard',
