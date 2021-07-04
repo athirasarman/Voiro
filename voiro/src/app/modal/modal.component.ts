@@ -34,7 +34,7 @@ export class ModalComponent {
     }
     imageCropped(event: ImageCroppedEvent) {
         this.croppedImage = event.base64;
-         this.fileToBeSaved = base64ToFile(this.croppedImage);
+        this.fileToBeSaved = base64ToFile(this.croppedImage);
         
     }
     imageLoaded() {
@@ -61,7 +61,8 @@ export class ModalComponent {
   /*------------------------------*/
 
      onFileDropped($event:any) {
-         this.imageChangedEvent =$event;
+    this.imageChangedEvent =$event;
+    this.fileName=$event.currentTarget.childNodes[0].files[0].name;
     this.prepareFilesList($event);
   }
 

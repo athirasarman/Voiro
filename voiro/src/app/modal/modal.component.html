@@ -22,16 +22,16 @@
 
            
       
-    <input type="file" mat-input mat-button color="primary" (change)="fileChangeEvent($event)">
+    <!--<input type="file" mat-input mat-button color="primary" (change)="fileChangeEvent($event)">-->
 
-    <!--<div class="container" appDnd (fileDropped)="onFileDropped($event)">
+ <div class="container" appDnd (change)="onFileDropped($event)">
   <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target)" />
   
 
   <h3>Drag and drop file here</h3>
   <h3>or</h3>
   <label for="fileDropRef">Browse for file</label>
-</div>-->
+</div>
        
      <image-cropper  mat-card-image 
     [imageChangedEvent]="imageChangedEvent"
@@ -47,20 +47,6 @@
          
         </div>
 
-        <!--<div class="cropArea" [ngClass]="{'dotted-boarder': !isFileSelected}" (drop)="dropHandler($event)"
-    (dragover)="allowDrop($event)">
-    <input #imageUpload type="file" accept="image/*" (change)="fileChangeEvent($event)" class="hidden">
-    <div *ngIf="!isFileSelected" class="select-btn-div">
-      <button class="btn btn-primary"
-        (click)="imageUpload.click();">Upload Image</button>
-    </div>
-  
-    <image-cropper #cropper [hidden]="!isFileSelected" [imageChangedEvent]="imageChangedEvent"
-      [imageBase64]="droppedImage" (imageLoaded)="imageLoaded()" (imageCropped)="imageCropped($event)"
-      [maintainAspectRatio]="true" [resizeToWidth]="350" [roundCropper]="true">
-    </image-cropper>
-  </div>
-      -->
 
   </mat-dialog-content>
 <mat-dialog-actions >
