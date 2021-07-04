@@ -1,14 +1,25 @@
-
+.grid-container {
+ // margin: 100px;
+  margin-top: 60px;
+  //height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 .content {
     padding: 16px;
 }
 
-.content > mat-card {
-    width: 180px;
+.photo-card {
+    max-width: 400px;
 
 }
 .mat-card{
-  //height:130px;
+  width: 365px;
 }
 
 .mat-card-actions{
@@ -16,4 +27,6 @@
   align-content: center;
   text-align: center;
 }
-
+.mat-card-image{
+  //width:365px;
+}

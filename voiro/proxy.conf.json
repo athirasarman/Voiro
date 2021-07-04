@@ -1,0 +1,10 @@
+{
+    "/api": {
+      "target": "https://api.imgbb.com/1/upload",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }

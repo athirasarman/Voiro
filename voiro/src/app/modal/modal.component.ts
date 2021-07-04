@@ -1,7 +1,7 @@
 import { Component,ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
-import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
+import { ImageCroppedEvent, ImageCropperComponent,base64ToFile  } from 'ngx-image-cropper';
 import { UploadImageService } from '../upload-image.service';
 
 @Component({
@@ -13,7 +13,10 @@ export class ModalComponent {
   uploadForm = this.fb.group({
     
   });
-  files: File[] = [];
+  files: any[] = [];
+  fileToBeSaved:any;
+  fileName="";
+  isFileSelected=true;
 
   
   constructor(private fb: FormBuilder, private uploadImageService:UploadImageService) {}
@@ -23,25 +26,16 @@ export class ModalComponent {
   
    croppedImage: any = '';
 
-   allowDrop(ev:any) {
-      ev.preventDefault();
-  }
 
- drag(ev:any) {
-  ev.dataTransfer.setData("text", ev.target.id);
- }
-
- drop(ev:any) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
- }
-  
     fileChangeEvent(event: any): void {
         this.imageChangedEvent = event;
+        this.fileName=event.currentTarget.files[0].name;
+
     }
     imageCropped(event: ImageCroppedEvent) {
         this.croppedImage = event.base64;
+         this.fileToBeSaved = base64ToFile(this.croppedImage);
+        
     }
     imageLoaded() {
         /* show cropper */
@@ -54,41 +48,44 @@ export class ModalComponent {
     }
 
 
-    onSelect(event:any) {
-       // console.log(event);
-        this.files.push(...event.addedFiles);
-        this.imageChangedEvent = event;
-  
-        const formData = new FormData();
-    
-        for (var i = 0; i < this.files.length; i++) { 
-          formData.append("file[]", this.files[i]);
-        }
-   
-       
-    }
-  
-    onRemove(event:any) {
-        console.log(event);
-        this.files.splice(this.files.indexOf(event), 1);
-    }
+ 
+ onSave(){
+     const fileToUpload: File = new File([this.fileToBeSaved], this.fileName);
+     const form = new FormData();
+     form.append('image', fileToUpload);
+     this.uploadImageService.uploadToImgbb(form);
 
-  onSave(): void {
-      let imageBlob=this.dataURItoBlob(this.croppedImage);
-    let data=this.uploadImageService.uploadToImgbb(imageBlob);
-    data.subscribe(details=>{
-        console.log(details);
-    })
+ }
+
+
+  /*------------------------------*/
+
+     onFileDropped($event:any) {
+         this.imageChangedEvent =$event;
+    this.prepareFilesList($event);
   }
 
-  dataURItoBlob(dataURI:any) {
-    console.log(dataURI);
 
-    const binary = atob(dataURI.split(',')[1]);
-    const array = [];
-    for (let i = 0; i < binary.length; i++) {
-      array.push(binary.charCodeAt(i));
+  /**
+   * Convert Files list to normal array list
+   * @param files (Files List)
+   */
+  prepareFilesList(files: Array<any>) {
+    for (const item of files) {
+      item.progress = 0;
+      this.files.push(item);
     }
+
+   // this.uploadFilesSimulator(0);
+  }
+
+
+
+     /**
+   * handle file from browsing
+   */
+  fileBrowseHandler(files:any) {
+    this.prepareFilesList(files);
   }
 
 }

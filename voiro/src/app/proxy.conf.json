@@ -1,0 +1,10 @@
+{
+    "/api": {
+      "target": "https://api.imgbb.com/1/upload?expiration=600&key=ee1dbf7276b271f2e338966bc7426022",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }

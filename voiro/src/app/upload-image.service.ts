@@ -3,36 +3,35 @@ import { HttpClient, HttpResponse, HttpHeaders, HttpErrorResponse} from '@angula
 import { BehaviorSubject,Observable} from 'rxjs';
 import { retry,catchError, map, tap } from 'rxjs/operators';
 import { Image } from './image';
-//import * as AWS from 'aws-sdk/global';
-//import * as S3 from 'aws-sdk/clients/s3';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadImageService {
   readonly imgBbKey="ee1dbf7276b271f2e338966bc7426022";
-  readonly uploadUrl="https://api.imgbb.com/1/upload?expiration=3000000&key=ee1dbf7276b271f2e338966bc7426022";
+  readonly uploadUrl="https://api.imgbb.com/1/upload?expiration=300000&key=ee1dbf7276b271f2e338966bc7426022";
   images:BehaviorSubject<Image[]>=new BehaviorSubject<Image[]>([])
   constructor(private http:HttpClient) { }
 
  
     httpOptions = {
-    headers: new HttpHeaders({ 'Accept': 'application/json'})//header options
+    headers: new HttpHeaders({ 'Accept': 'application/json','Access-Control-Allow-Origin':'*'})//header options
   };
 
-  uploadToImgbb(image:any):Observable<Image>{
-   
+  uploadToImgbb(form:any):Observable<Image>{
+     
 
-    return this.http.post<Image>(this.uploadUrl,this.imgBbKey,this.httpOptions)
-       .pipe(
-         map((data: any) => {
-             console.log(data);
-             this.images.next(data);
-           }),
-         tap(_ => this.log("Upload Done")),
-         catchError(this.handleError<Image>('Upload Image'))
-         )as Observable<Image>;
-     ;
+    let details= this.http.post<any>(this.uploadUrl,form,this.httpOptions);
+    details.subscribe(data=>{
+       console.log(data);
+       if(data.status==200)
+       {
+       let imageDetails=this.images.getValue();
+        imageDetails.push(data.data);
+        this.images.next(imageDetails);
+      }
+     });
+     return details;
   }
 
 
