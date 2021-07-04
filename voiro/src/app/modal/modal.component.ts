@@ -36,14 +36,13 @@ export class ModalComponent {
         this.fileToBeSaved = base64ToFile(this.croppedImage);
         
     }
-    imageLoaded() {
-        /* show cropper */
-    }
-    cropperReady() {
-        /* cropper ready */
-    }
-    loadImageFailed() {
-        /* show message */
+    
+    onReset(){
+        this.imageChangedEvent="";
+        this.croppedImage="";
+        this.fileName="";
+        this.files=[];
+        this.fileToBeSaved="";
     }
 
 

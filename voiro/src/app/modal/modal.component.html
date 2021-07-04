@@ -4,7 +4,7 @@
   <h2 class="heading">Change Organization Image</h2>
 
     <span class="close">
-  <button mat-button color="primary" *ngIf="imageChangedEvent">Re-upload Image</button>
+  <button mat-button color="primary" (click)="onReset()" *ngIf="imageChangedEvent">Re-upload Image</button>
 
   <button mat-icon-button color="primary" [mat-dialog-close]="true"  aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>close</mat-icon>
@@ -31,11 +31,8 @@
     [aspectRatio]="4 / 3"
     [resizeToWidth]="128"
     format="png"
-    (imageCropped)="imageCropped($event)"
-    (imageLoaded)="imageLoaded()"
-    (cropperReady)="cropperReady()"
-    (loadImageFailed)="loadImageFailed()"
-      ></image-cropper>
+    (imageCropped)="imageCropped($event)">
+      </image-cropper>
          </div>
         
 
