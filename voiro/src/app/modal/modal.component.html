@@ -4,7 +4,7 @@
   <h2 class="heading">Change Organization Image</h2>
 
     <span class="close">
-  <button mat-button color="primary">Re-upload Image</button>
+  <button mat-button color="primary" *ngIf="imageChangedEvent">Re-upload Image</button>
 
   <button mat-icon-button color="primary" [mat-dialog-close]="true"  aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>close</mat-icon>
@@ -12,28 +12,20 @@
     </span>
   </mat-card-header>
 <mat-dialog-content class="mat-typography">
-           <div>
-
-    <!--<div *ngIf="!files.length" class="col-12 rmpm dropzone" appDrag (files)="filesDropped($event)">
-     <div class="text-wrapper">
-     <div class="centered">Drop your file here!</div>
-  </div>
-</div>-->
-
-           
-      
-    <!--<input type="file" mat-input mat-button color="primary" (change)="fileChangeEvent($event)">-->
-
- <div class="container" appDnd (change)="onFileDropped($event)">
-  <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target)" />
+          
+<div >
+ <div class="container" appDnd (change)="onFileDropped($event)" *ngIf="!imageChangedEvent" >
+  <!--*ngIf="!isFileSelected">-->
+  <input type="file" #fileDropRef id="fileDropRef" (change)="fileBrowseHandler($event.target)" />
   
 
   <h3>Drag and drop file here</h3>
   <h3>or</h3>
   <label for="fileDropRef">Browse for file</label>
 </div>
-       
-     <image-cropper  mat-card-image 
+</div>
+       <div *ngIf="imageChangedEvent">
+     <image-cropper  mat-card-image
     [imageChangedEvent]="imageChangedEvent"
     [maintainAspectRatio]="true"
     [aspectRatio]="4 / 3"
@@ -44,14 +36,15 @@
     (cropperReady)="cropperReady()"
     (loadImageFailed)="loadImageFailed()"
       ></image-cropper>
-         
-        </div>
+         </div>
+        
 
 
   </mat-dialog-content>
 <mat-dialog-actions >
-  
-  <img class="card-avatar" mat-card-avatar [src]="croppedImage" alt="Cropped Image">
+  <ng-container *ngIf="imageChangedEvent">
+  <img class="card-avatar" mat-card-avatar [src]="croppedImage" alt="Cropped Image" >
+</ng-container>
    <span class="button">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="onSave()" cdkFocusInitial>Save Changes</button>

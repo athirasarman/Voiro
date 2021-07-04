@@ -16,7 +16,6 @@ export class ModalComponent {
   files: any[] = [];
   fileToBeSaved:any;
   fileName="";
-  isFileSelected=true;
 
   
   constructor(private fb: FormBuilder, private uploadImageService:UploadImageService) {}

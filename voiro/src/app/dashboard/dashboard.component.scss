@@ -13,7 +13,9 @@
 .content {
     padding: 16px;
 }
-
+.content > mat-card {
+    margin-bottom: 16px;
+}
 .photo-card {
     max-width: 400px;
 
