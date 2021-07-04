@@ -1,22 +1,22 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+  <h1 class="mat-h1">Voiro</h1>
+  <mat-grid-list cols="1" rowHeight="350px">
+    <mat-grid-tile  [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
+            404 Error
+            
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <div>
+            <h1>Page Not Found</h1>
+            <h2>Oops. Looks like the page you're looking for no longer exists</h2>
+            <h2>But we're here to bring you back to safety</h2>
+          </div>
+          <a mat-raised-button color="primary" routerLink="/">
+        Go Back</a>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
