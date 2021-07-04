@@ -11,7 +11,7 @@ import { Image } from './image';
 })
 export class UploadImageService {
   readonly imgBbKey="ee1dbf7276b271f2e338966bc7426022";
-  readonly uploadUrl="https://api.imgbb.com/1/upload?expiration=600&key=ee1dbf7276b271f2e338966bc7426022";
+  readonly uploadUrl="https://api.imgbb.com/1/upload?expiration=3000000&key=ee1dbf7276b271f2e338966bc7426022";
   images:BehaviorSubject<Image[]>=new BehaviorSubject<Image[]>([])
   constructor(private http:HttpClient) { }
 
@@ -27,6 +27,7 @@ export class UploadImageService {
        .pipe(
          map((data: any) => {
              console.log(data);
+             this.images.next(data);
            }),
          tap(_ => this.log("Upload Done")),
          catchError(this.handleError<Image>('Upload Image'))

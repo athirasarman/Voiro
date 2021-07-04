@@ -79,7 +79,6 @@ export class ModalComponent {
     data.subscribe(details=>{
         console.log(details);
     })
-   
   }
 
   dataURItoBlob(dataURI:any) {

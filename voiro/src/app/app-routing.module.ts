@@ -4,7 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-    {path:'', component: HeaderComponent},
+     {path:'', component: HeaderComponent},
     { path:'404', component:PageNotFoundComponent},
     { path:'**', redirectTo: '/404'},
    ];
