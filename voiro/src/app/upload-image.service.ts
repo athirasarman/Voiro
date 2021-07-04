@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse, HttpHeaders, HttpErrorResponse} from '@angula
 import { BehaviorSubject,Observable} from 'rxjs';
 import { retry,catchError, map, tap } from 'rxjs/operators';
 import { Image } from './image';
+import { images } from './imagesList';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,14 @@ import { Image } from './image';
 export class UploadImageService {
   readonly imgBbKey="ee1dbf7276b271f2e338966bc7426022";
   readonly uploadUrl="https://api.imgbb.com/1/upload?expiration=300000&key=ee1dbf7276b271f2e338966bc7426022";
-  images:BehaviorSubject<Image[]>=new BehaviorSubject<Image[]>([])
+  images:BehaviorSubject<Image[]>=new BehaviorSubject<Image[]>([]);
   constructor(private http:HttpClient) { }
 
  
     httpOptions = {
-    headers: new HttpHeaders({ 'Accept': 'application/json','Access-Control-Allow-Origin':'*'})//header options
+    headers: new HttpHeaders({ 'Accept': 'application/json','Access-Control-Allow-Origin':'*',
+                               'Access-Control-Allow-Credentials':'*',
+                               'Access-Control-Expose-Headers':'*'})//header options
   };
 
   uploadToImgbb(form:any):Observable<Image>{

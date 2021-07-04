@@ -17,12 +17,10 @@
     margin-bottom: 16px;
 }
 .photo-card {
-    max-width: 400px;
+    width: 300px;
 
 }
-.mat-card{
-  width: 365px;
-}
+
 
 .mat-card-actions{
   justify-content: center;
@@ -32,3 +30,16 @@
 .mat-card-image{
   //width:365px;
 }
+.header-image{
+ background-size: cover;
+}
+.dashboard-card {
+  position: absolute;
+  width:99%;
+  top: 20px;  
+  left: 8px;
+  right: 8px;
+  bottom: 15px;
+  height: 100% !important;
+}
+

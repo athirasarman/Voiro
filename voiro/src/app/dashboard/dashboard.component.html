@@ -1,10 +1,19 @@
-<div class="grid-container ">
+
+<mat-card>
+    <mat-card-header>
+    <mat-card-title>Uploaded Images</mat-card-title>
+  </mat-card-header>
+ <mat-card-content>
 <div class="content">
-<div fxLayout="row wrap" fxLayoutGap="16px grid" *ngIf="display">
-  <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%"*ngFor="let image of imageList | async">
-    <mat-card class="mat-elevation-z4 photo-card" >
+
+  <mat-grid-list cols="4" rowHeight="600px">
+  <mat-grid-tile
+      *ngFor="let image of imageList | async"
+      [colspan]="1"
+      [rowspan]="1">
+      <mat-card class= " mat-elevation-z4 photo-card" >
       <mat-card-header>
-    <div mat-card-avatar class="example-header-image">
+    <div mat-card-avatar class="header-image">
         <img mat-card-avatar  src="{{image.display_url}}" alt="Photo of Organization">
     </div>
     <mat-card-title  #tooltip="matTooltip"
@@ -18,13 +27,8 @@
        <img mat-card-image class="imgs" src="{{image.display_url}}" alt="Photo of Organization" height="365px">
      
     </mat-card>
-
-   
-    
-
-  </div>
-
-  </div>
+  </mat-grid-tile>
+</mat-grid-list>
 
 
   <div>
@@ -36,5 +40,6 @@
     </mat-card>
   </div>
 </div>
-</div>
-<!-- fxFlex.xs="100%" fxFlex.sm="33%"-->
+</mat-card-content>
+</mat-card>
+

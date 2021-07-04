@@ -61,7 +61,7 @@ export class ModalComponent {
      onFileDropped($event:any) {
     this.imageChangedEvent =$event;
     this.fileName=$event.currentTarget.childNodes[0].files[0].name;
-    this.prepareFilesList($event);
+    //this.prepareFilesList($event);
   }
 
 

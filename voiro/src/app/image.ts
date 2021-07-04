@@ -4,7 +4,7 @@ export interface Image {
 		url_viewer:string;
 		url:string;
 		display_url:string;
-		size:string;
+		size:number;
 		time:string;
 		expiration:string;
 		image:{

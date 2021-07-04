@@ -24,7 +24,7 @@
   <label for="fileDropRef">Browse for file</label>
 </div>
 </div>
-       <div *ngIf="imageChangedEvent">
+       <div *ngIf="imageChangedEvent" class="cropper">
      <image-cropper  mat-card-image
     [imageChangedEvent]="imageChangedEvent"
     [maintainAspectRatio]="true"

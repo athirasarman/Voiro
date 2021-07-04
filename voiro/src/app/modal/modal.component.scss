@@ -1,31 +1,9 @@
-.full-width {
-  width: 100%;
+.cropper{
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
 }
-
-.shipping-card {
-  min-width: 120px;
-  margin: 20px auto;
-}
-
-.mat-radio-button {
-  display: block;
-  margin: 5px 0;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.col {
-  flex: 1;
-  margin-right: 20px;
-}
-
-.col:last-child {
-  margin-right: 0;
-}
-
 .mat-dialog-content{
   height:250px;
   width:100%;
@@ -57,6 +35,10 @@
 .card-avatar{
 //eight:200px;
 //idth:200px;
+}
+.image-cropper {
+  width: 400px;
+  height:400px;
 }
 .mat-dialog-content{
   background-color: #F6F6F6;
