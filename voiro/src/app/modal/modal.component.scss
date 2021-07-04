@@ -1,0 +1,63 @@
+.full-width {
+  width: 100%;
+}
+
+.shipping-card {
+  min-width: 120px;
+  margin: 20px auto;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+.mat-dialog-content{
+  height:250px;
+  width:100%;
+  vertical-align: middle;
+}
+.mat-card-header{
+  width:100%;
+}
+
+.button{
+  width:92%;
+  text-align:right;
+}
+.close{
+  width:70%;
+  float: right;
+  right:1%;
+  text-align:right;
+}
+#drop_zone {
+  border: 5px;
+  width:  100%;
+  height: 250px;
+}
+.heading{
+ // width:30%;
+  text-align:left;
+}
+.card-avatar{
+//eight:200px;
+//idth:200px;
+}
+.mat-dialog-content{
+  background-color: #F6F6F6;
+}

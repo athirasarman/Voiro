@@ -1,0 +1,46 @@
+<form [formGroup]="uploadForm">
+  <mat-card-header>
+
+  <h2 class="heading">Change Organization Image</h2>
+
+    <span class="close">
+  <button mat-button color="primary">Re-upload Image</button>
+
+  <button mat-icon-button color="primary" [mat-dialog-close]="true"  aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>close</mat-icon>
+      </button>
+    </span>
+  </mat-card-header>
+<mat-dialog-content class="mat-typography">
+        <div>
+
+           
+      
+       <input type="file" mat-input mat-button color="primary" (change)="fileChangeEvent($event)" ondragover="dragOverHandler(event);" />
+       
+     <image-cropper  mat-card-image 
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 3"
+    [resizeToWidth]="128"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+      ></image-cropper>
+         
+        </div>
+      
+
+  </mat-dialog-content>
+<mat-dialog-actions >
+  
+  <img class="card-avatar" mat-card-avatar [src]="croppedImage" alt="Cropped Image">
+   <span class="button">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="onSave()" cdkFocusInitial>Save Changes</button>
+</span>
+</mat-dialog-actions>
+
+</form>
