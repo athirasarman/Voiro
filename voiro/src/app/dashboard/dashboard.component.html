@@ -6,8 +6,8 @@
  <mat-card-content>
 <div class="content">
 
-  <mat-grid-list cols="4" rowHeight="600px">
-  <mat-grid-tile
+  <mat-grid-list cols="4" rowHeight="600px" *ngIf="display">
+  <mat-grid-tile 
       *ngFor="let image of imageList | async"
       [colspan]="1"
       [rowspan]="1">
@@ -27,17 +27,23 @@
        <img mat-card-image class="imgs" src="{{image.display_url}}" alt="Photo of Organization" height="365px">
      
     </mat-card>
-  </mat-grid-tile>
+    </mat-grid-tile>
+
+  
 </mat-grid-list>
 
-
-  <div>
     <mat-card class="mat-elevation-z4" *ngIf="!display">
-
+          
          <mat-card-content>
            <h1>No Images Uploaded.</h1>
          </mat-card-content>
     </mat-card>
+
+
+
+
+  <div>
+    
   </div>
 </div>
 </mat-card-content>
